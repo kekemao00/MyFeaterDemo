@@ -21,6 +21,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "ACRA_URL", '"http://10.0.2.2:4567/reports"'
+            buildConfigField "boolean", "ACRA_INSTALL", 'true'
+        }
+        debug {
+            buildConfigField "String", "ACRA_URL", '"http://10.0.2.2:4567/reports"'
+            buildConfigField "boolean", "ACRA_INSTALL", 'true'
         }
     }
     compileOptions {
@@ -32,8 +39,10 @@ android {
     }
 }
 
-dependencies {
 
+def acraVersion = '5.1.1'
+
+dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
@@ -43,16 +52,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-
-// Android应用程序崩溃报告
-    def acraVersion = "5.8.4";
-    implementation("ch.acra:acra-http:$acraVersion")
-
-    implementation 'com.blankj:utilcodex:1.30.6'
-
-
-//    // Stetho is a debug bridge for Android applications, enabling the powerful Chrome Developer Tools and much more.
-//    implementation'com.facebook.stetho:stetho:1.6.0'
-//    implementation'com.facebook.stetho:stetho-okhttp3:1.6.0'
-//    implementation'com.facebook.stetho:stetho-urlconnection:1.5.1'
+    // Android应用程序崩溃报告 acra
+    implementation "ch.acra:acra-http:$acraVersion"
+    implementation "ch.acra:acra-dialog:$acraVersion"
+    implementation "ch.acra:acra-notification:$acraVersion"
 }
