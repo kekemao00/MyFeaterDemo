@@ -13,8 +13,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickButton(view: View) {
-//        throw RuntimeException(getString(R.string.msg_kaboom))
-        runOnUiThread { Thread.sleep(10000) }
+        throw RuntimeException(getString(R.string.msg_kaboom))
+//        runOnUiThread { Thread.sleep(10000) }
     }
 
 }
