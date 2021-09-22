@@ -1,2 +1,3 @@
 rootProject.name = "MyFeatDemo"
 include ':ACRA'
+include ':AndroidAutoSize'
