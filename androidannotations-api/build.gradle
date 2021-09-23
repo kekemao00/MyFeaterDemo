@@ -2,13 +2,17 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
+/**
+ * kotlin 需要这一句 kapt，注释解释器
+ */
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "me.kekemao.androidautosize"
+        applicationId "me.kekemao.androidannotations_api"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -39,11 +43,18 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    // Android 今日头天的屏幕适配方案
-    // https://github.com/JessYanCoding/AndroidAutoSize
-    implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
 
+    // 快速安卓开发。易于维护
+    // https://stackoverflow.com/questions/44321046/how-to-use-the-androidannotations-library-in-kotlin
+    // https://github.com/androidannotations/androidannotations/wiki/AvailableAnnotations
+    // https://kotlinlang.org/docs/kapt.html#using-in-gradle
+    def AAVersion = '4.8.0'
+    kapt "org.androidannotations:androidannotations:$AAVersion"
+    implementation "org.androidannotations:androidannotations-api:$AAVersion"
+//    def version = '2.0.0.M4'
+//    implementation("org.springframework.android:spring-android-rest-template:$version")
+//    spring-android
 }

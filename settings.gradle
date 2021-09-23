@@ -1,3 +1,4 @@
 rootProject.name = "MyFeatDemo"
 include ':ACRA'
 include ':AndroidAutoSize'
+include ':androidannotations-api'
