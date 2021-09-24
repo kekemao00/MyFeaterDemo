@@ -20,6 +20,10 @@ allprojects {
         mavenCentral()
         maven { url "https://jitpack.io" }
         jcenter() // Warning: this repository is going to shut down soon
+        // spring android
+        maven {
+            url = 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
     }
 }
 

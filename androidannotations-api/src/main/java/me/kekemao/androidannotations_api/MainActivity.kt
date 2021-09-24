@@ -1,6 +1,8 @@
 package me.kekemao.androidannotations_api
 
+import android.graphics.Color
 import android.util.Log
+import android.view.KeyEvent
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -37,13 +39,18 @@ open class MainActivity : AppCompatActivity() {
     lateinit var cl_rootView: ConstraintLayout
 
     @UiThread
-    open fun uiStaart() {
+    open fun uiStart() {
         Log.i(TAG, "uiStaart: 当前线程名：" + Thread.currentThread().name)
+        tv_1?.text = "uiStart"
+        cl_rootView.setBackgroundColor(Color.GREEN);
     }
 
     @Background
     open fun backStart() {
         Log.i(TAG, "backStart: 当前线程名：" + Thread.currentThread().name)
+
+
+//        Log.i("TAG", "events: client= client" + client)
     }
 
 
@@ -51,8 +58,16 @@ open class MainActivity : AppCompatActivity() {
     open fun btn_1() {
         Toast.makeText(this, "点击了按钮", Toast.LENGTH_SHORT).show()
         backStart()
-        uiStaart()
+        uiStart()
+    }
+
+
+    @KeyDown(KeyEvent.KEYCODE_VOLUME_DOWN, KeyEvent.KEYCODE_VOLUME_UP)
+    open fun keyDownF(keyEvent: KeyEvent): Boolean {
+        Log.i(TAG, "keyboard: keyevent.keycode=" + keyEvent.keyCode)
+        return false
     }
 
 }
+
 

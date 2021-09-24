@@ -54,7 +54,14 @@ dependencies {
     def AAVersion = '4.8.0'
     kapt "org.androidannotations:androidannotations:$AAVersion"
     implementation "org.androidannotations:androidannotations-api:$AAVersion"
-//    def version = '2.0.0.M4'
-//    implementation("org.springframework.android:spring-android-rest-template:$version")
-//    spring-android
+
+    //    spring-android
+    // https://blog.csdn.net/xichenguan/article/details/51759827
+    // https://blog.csdn.net/nupt123456789/article/details/24879741
+    //  https://github.com/androidannotations/androidannotations/wiki/Rest-API#rest
+    //  https://blog.csdn.net/nupt123456789/article/details/24384713
+    def springVersion = '2.0.0.M4'
+    kapt "org.androidannotations:rest-spring:$AAVersion"
+    implementation "org.androidannotations:rest-spring-api:$AAVersion"
+    provided 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
 }
